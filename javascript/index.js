@@ -80,17 +80,17 @@ getInstruction("mashedPotatoes", 0, (step1) => {
 
 // Iteration 3 using async/await
 // ...
-/* async function makeBroccoli(broccoli) {
+/*   async function makeBroccoli(broccoli) {
   try { 
-      broccoli.forEach((step, i) => {
-      let steps = await obtainInstruction(step, i)
-      document.querySelector("#broccoli").innerHTML += `<li>${steps}</li>`;
+      broccoli.forEach((step) => {
+      await obtainInstruction(step)
+      document.querySelector("#broccoli").innerHTML += `<li>${step}</li>`;
     })
     }  catch (err) {
       console.log("Something went wrong!", err);
     }
-  } */
- async function makeBroccoli() {
+  }   */
+   async function makeBroccoli() {
   try {
     let step0 = await obtainInstruction('broccoli', 0);
     document.querySelector("#broccoli").innerHTML += `<li>${step0}</li>`;
@@ -111,12 +111,21 @@ getInstruction("mashedPotatoes", 0, (step1) => {
   }catch (err) {
     console.log("Something went wrong!", err);
   }
-} 
-makeBroccoli('broccoli')
+}   
+makeBroccoli()
 
 // Bonus 2 - Promise all
 // ...
-Promise.all(brusselsSprouts)
+let step0 = obtainInstruction('brusselsSprouts', 0);
+let step1 = obtainInstruction('brusselsSprouts', 1);
+let step2 = obtainInstruction('brusselsSprouts', 2);
+let step3 = obtainInstruction('brusselsSprouts', 3);
+let step4 = obtainInstruction('brusselsSprouts', 4);
+let step5 = obtainInstruction('brusselsSprouts', 5);
+let step6 = obtainInstruction('brusselsSprouts', 6);
+let step7 = obtainInstruction('brusselsSprouts', 7);
+
+Promise.all([step0,step1, step2, step3, step4, step5, step6, step7 ])
 .then(steps => {
   let ol = document.querySelector("#brusselsSprouts")
   steps.forEach(step => {
